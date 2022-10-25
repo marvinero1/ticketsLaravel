@@ -24,8 +24,8 @@
             <div class="col-md-12 col-sm-12" style="padding-block-end: 15px;">
                 <div class="col-md-4 col-sm-12  form-group">
                     <label for="nombre">Agencia Origen *</label>
-                    <select name="department" id="department" class="form-control">
-                        <option value=""> -- Seleccione Uno --</option>
+                    <select name="dept_id" class="form-control">
+                        <option> -- Seleccione Uno --</option>
                         <?php $__currentLoopData = $dpto; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dptos): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <option value="<?php echo e($dptos->dept_id); ?>"><?php echo e($dptos->dept_name); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
@@ -33,16 +33,16 @@
                 </div>
 
                 <div class="col-md-4 col-sm-12  form-group">
-                    <label for="nombre">Quien Solicita *</label>
-                    <input type="text" class="form-control" readonly name="denominacion" value="<?php echo e(Auth::user()->name); ?>">
+                    <label for="nombre">Solicita <?php echo e(Auth::user()->name); ?> con ID:</label>
+                    <input type="text" class="form-control" readonly name="staff_id" value="<?php echo e(Auth::user()->id); ?>" >
                 </div>
 
                 <div class="col-md-4 col-sm-12  form-group">
                     <label for="nombre">Servicio Solicitado *</label>
-                    <select name="department" id="department" class="form-control">
-                        <option value=""> -- Seleccione Uno --</option>
+                    <select name="helptopic" class="form-control">
+                        <option > -- Seleccione Uno --</option>
                         <?php $__currentLoopData = $servicio; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $servicios): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <option value="<?php echo e($servicios->topic_id); ?>"><?php echo e($servicios->topic); ?></option>
+                            <option value="<?php echo e($servicios->topic); ?>"><?php echo e($servicios->topic); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
                     </select>
                 </div>
@@ -51,9 +51,9 @@
 
         <div class="col-md-12 col-sm-12" style="padding-block-end: 7px;">
             <div class="col-md-4 col-sm-12 form-group">
-                <label for="nombre">Asignar a:</label>
-                <select name="department" id="department" class="form-control">
-                    <option value=""> -- Asigne el Ticket a un Personal --</option>
+                <label>Asignar a:</label>
+                <select name="staff_id" class="form-control">
+                    <option> -- Asigne el Ticket a un Personal --</option>
                     <?php $__currentLoopData = $user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $users): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($users->staff_id); ?>"><?php echo e($users->lastname); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
@@ -61,16 +61,16 @@
             </div>
 
             <div class="col-md-4 col-sm-12 form-group">
-                <label for="nombre">Asunto</label>
-                <input type="text" class="form-control" name="asunto" placeholder="Asunto">
+                <label>Asunto</label>
+                <input type="text" class="form-control" name="subject" placeholder="Asunto">
             </div>
 
             <div class="col-md-2 col-sm-12 form-group">
-                <label for="nombre">N. Remision que Revertio</label>
-                <input type="text" class="form-control" name="rosca" placeholder="# Remision">
+                <label>N. Remision que Revertio</label>
+                <input type="text" class="form-control" name="nroid_nr" placeholder="# Remision">
             </div>
             <div class="col-md-2 col-sm-12 form-group">
-                <label for="nombre">Prioridad</label>
+                <label>Prioridad</label>
                 <select class="form-control" name="priority_id">
                     <option value=""> -- Prioridad --</option>
                     <option value="1">Baja</option>
@@ -83,7 +83,7 @@
 
         <div class="col-md-12 col-sm-12" style="padding-block-end: 7px;">
             <div class="col-md-4 col-sm-12  form-group">
-                <label><strong>Adjuntar Archivo *</strong></label>
+                <label><strong>Adjuntar Archivo </strong></label>
                 <label for="file-upload-portada" class="custom-file-upload" style="text-align: center;">
                     <i class="fa fa-cloud-upload" aria-hidden="true"></i>&nbsp;
                     <strong>Archivo</strong>
@@ -97,6 +97,8 @@
                 <textarea  type="text-area" class="form-control" name="mensaje" placeholder="Mensaje"></textarea>
             </div>
         </div>
+
+        <input type="hidden" value="Pendiente" name="estado">
 
         <div class="footer" style="padding: 15px 15px 5px 5px; float: right;">
             <a type="button" class="btn btn-warning float-right" href="<?php echo e(url('/admin/producto')); ?>" style="color: black">

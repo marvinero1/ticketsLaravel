@@ -20,7 +20,6 @@
 
         
         <?php echo $__env->yieldContent('head'); ?>
-
     </head>
     <body class="<?php echo $__env->yieldContent('body_class'); ?>">
 

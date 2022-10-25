@@ -23,8 +23,8 @@
             <div class="col-md-12 col-sm-12" style="padding-block-end: 15px;">
                 <div class="col-md-4 col-sm-12  form-group">
                     <label for="nombre">Agencia Origen *</label>
-                    <select name="department" id="department" class="form-control">
-                        <option value=""> -- Seleccione Uno --</option>
+                    <select name="dept_id" class="form-control">
+                        <option> -- Seleccione Uno --</option>
                         @foreach ($dpto as $dptos)
                             <option value="{{ $dptos->dept_id }}">{{ $dptos->dept_name }}</option>
                         @endforeach 
@@ -32,16 +32,16 @@
                 </div>
 
                 <div class="col-md-4 col-sm-12  form-group">
-                    <label for="nombre">Quien Solicita *</label>
-                    <input type="text" class="form-control" readonly name="denominacion" value="{{ Auth::user()->name }}">
+                    <label for="nombre">Solicita {{ Auth::user()->name }} con ID:</label>
+                    <input type="text" class="form-control" readonly name="staff_id" value="{{ Auth::user()->id }}" >
                 </div>
 
                 <div class="col-md-4 col-sm-12  form-group">
                     <label for="nombre">Servicio Solicitado *</label>
-                    <select name="department" id="department" class="form-control">
-                        <option value=""> -- Seleccione Uno --</option>
+                    <select name="helptopic" class="form-control">
+                        <option > -- Seleccione Uno --</option>
                         @foreach ($servicio as $servicios)
-                            <option value="{{ $servicios->topic_id }}">{{ $servicios->topic }}</option>
+                            <option value="{{ $servicios->topic }}">{{ $servicios->topic }}</option>
                         @endforeach 
                     </select>
                 </div>
@@ -50,9 +50,9 @@
 
         <div class="col-md-12 col-sm-12" style="padding-block-end: 7px;">
             <div class="col-md-4 col-sm-12 form-group">
-                <label for="nombre">Asignar a:</label>
-                <select name="department" id="department" class="form-control">
-                    <option value=""> -- Asigne el Ticket a un Personal --</option>
+                <label>Asignar a:</label>
+                <select name="staff_id" class="form-control">
+                    <option> -- Asigne el Ticket a un Personal --</option>
                     @foreach ($user as $users)
                         <option value="{{ $users->staff_id }}">{{ $users->lastname }}</option>
                     @endforeach 
@@ -60,16 +60,16 @@
             </div>
 
             <div class="col-md-4 col-sm-12 form-group">
-                <label for="nombre">Asunto</label>
-                <input type="text" class="form-control" name="asunto" placeholder="Asunto">
+                <label>Asunto</label>
+                <input type="text" class="form-control" name="subject" placeholder="Asunto">
             </div>
 
             <div class="col-md-2 col-sm-12 form-group">
-                <label for="nombre">N. Remision que Revertio</label>
-                <input type="text" class="form-control" name="rosca" placeholder="# Remision">
+                <label>N. Remision que Revertio</label>
+                <input type="text" class="form-control" name="nroid_nr" placeholder="# Remision">
             </div>
             <div class="col-md-2 col-sm-12 form-group">
-                <label for="nombre">Prioridad</label>
+                <label>Prioridad</label>
                 <select class="form-control" name="priority_id">
                     <option value=""> -- Prioridad --</option>
                     <option value="1">Baja</option>
@@ -88,7 +88,7 @@
                     <strong>Archivo</strong>
                 </label>
                 <p><strong>Sugerencia:</strong>Se admiten archivos con un peso max. de<strong> 100 MB</strong></p>
-                <input id="file-upload-portada" type="file" name="imagen_portada">
+                <input id="file-upload-portada" type="file" name="file">
             </div>
 
             <div class="col-md-8 col-sm-12  form-group">
@@ -96,6 +96,8 @@
                 <textarea  type="text-area" class="form-control" name="mensaje" placeholder="Mensaje"></textarea>
             </div>
         </div>
+
+        <input type="hidden" value="Pendiente" name="estado">
 
         <div class="footer" style="padding: 15px 15px 5px 5px; float: right;">
             <a type="button" class="btn btn-warning float-right" href="{{url('/admin/producto')}}" style="color: black">
