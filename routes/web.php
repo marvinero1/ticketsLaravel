@@ -11,7 +11,6 @@
 |
 */
 
-
 /**
  * Auth routes
  */
@@ -51,7 +50,7 @@ Route::group(['namespace' => 'Auth'], function () {
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => 'admin'], function () {
 
     // Dashboard
-    Route::get('/', 'DashboardController@index')->name('dashboard');
+    Route::get('indexdashboard', 'DashboardController@index')->name('dashboard');
 
     //Users
     Route::get('users', 'UserController@index')->name('users');
@@ -65,10 +64,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('permissions/{user}/repeat', 'PermissionController@repeat')->name('permissions.repeat');
     Route::get('dashboard/log-chart', 'DashboardController@getLogChartData')->name('dashboard.log.chart');
     Route::get('dashboard/registration-chart', 'DashboardController@getRegistrationChartData')->name('dashboard.registration.chart');
+
+
+    Route::resource('tickets', TicketsController::class);
+
 });
 
 
 Route::get('/', 'HomeController@index');
+Route::get('/index', 'HomeController@dashboard')->name('index');
 
 /**
  * Membership

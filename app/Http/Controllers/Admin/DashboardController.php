@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -17,8 +18,7 @@ class DashboardController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct(){
         $this->middleware('auth');
     }
 
@@ -27,8 +27,7 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
         $counts = [
             'users' => \DB::table('users')->count(),
             'users_unconfirmed' => \DB::table('users')->where('confirmed', false)->count(),
@@ -46,8 +45,8 @@ class DashboardController extends Controller
     }
 
 
-    public function getLogChartData(Request $request)
-    {
+    public function getLogChartData(Request $request){
+        
         \Validator::make($request->all(), [
             'start' => 'required|date|before_or_equal:now',
             'end' => 'required|date|after_or_equal:start',
@@ -90,7 +89,6 @@ class DashboardController extends Controller
 
     public function getRegistrationChartData()
     {
-
         $data = [
             'registration_form' => User::whereDoesntHave('providers')->count(),
             'google' => User::whereHas('providers', function ($query) {

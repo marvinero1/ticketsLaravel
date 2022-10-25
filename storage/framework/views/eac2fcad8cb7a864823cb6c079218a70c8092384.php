@@ -14,16 +14,18 @@
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">
                         <li>
-                            <a href="{{ route('logout') }}">
-                                <i class="fa fa-sign-out pull-right"></i> {{ __('views.backend.section.header.menu_0') }}
+                            <a href="<?php echo e(route('logout')); ?>">
+                                <i class="fa fa-sign-out pull-right"></i> <?php echo e(__('views.backend.section.header.menu_0')); ?>
+
                             </a>
                         </li>
                     </ul>
                 </li>
 
-                {{-- <li class="guided-tour"><span>{{ \Carbon\Carbon::now()->format('F j, Y') }}</span></li> --}}
-                <li style="padding: 20px 0px 0px 0px;"><span>{{ \Carbon\Carbon::now()->format('F j, Y') }}</span></li>
+                
+                <li style="padding: 20px 0px 0px 0px;"><span><?php echo e(\Carbon\Carbon::now()->format('F j, Y')); ?></span></li>
             </ul>
         </nav>
     </div>
 </div>
+<?php /**PATH C:\laragon\www\ticketsLaravel\resources\views/admin/sections/header.blade.php ENDPATH**/ ?>

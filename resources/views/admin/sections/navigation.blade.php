@@ -1,25 +1,23 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
-        <div class="navbar nav_title" style="border: 0;">
+        <div class="navbar nav_title text-center" style="border: 0; margin: 1px 0 0 0px !important;">
             <a href="{{ route('admin.dashboard') }}" class="site_title">
-                <span>{{ config('app.name') }}</span>
+                <h3><i class="fa fa-ticket" style="margin: 1px 0 0 0px !important;"></i> Ticket's Pertec</h3>
             </a>
         </div>
 
         <div class="clearfix"></div>
 
         <!-- menu profile quick info -->
-        <div class="profile clearfix">
+        <div class="profile clearfix"><br>
             <div class="profile_pic">
-                <img src="{{ auth()->user()->avatar }}" alt="..." class="img-circle profile_img">
+                <img src="{{ auth()->user()->avatar }}" alt="Profile" class="img-circle profile_img">
             </div>
             <div class="profile_info">
                 <h2>{{ auth()->user()->name }}</h2>
             </div>
-        </div>
-        <!-- /menu profile quick info -->
-
-        <br/>
+        </div><br/>
+        <!-- /menu profile quick info -->      
 
         <!-- sidebar menu -->
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
@@ -32,9 +30,51 @@
                             {{ __('views.backend.section.navigation.menu_0_1') }}
                         </a>
                     </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-ticket"></i>
+                            {{ __('views.backend.section.navigation.menu_2_1') }}
+                            <span class="fa fa-chevron-down"></span>
+                        </a>
+                        <ul class="nav child_menu">
+                            <li>
+                                <a href="{{ route('admin.tickets.index') }}">
+                                    Mis Ticket's
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('log-viewer::logs.list') }}">
+                                   Tus Pendientes
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('log-viewer::logs.list') }}">
+                                   Pendientes de Verificacion
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('log-viewer::logs.list') }}">
+                                    Ticket's Cerrados
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.users') }}">
+                            <i class="fa fa-id-card" aria-hidden="true"></i>
+                            Lista del Personal
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.users') }}">
+                            <i class="fa fa-cubes" aria-hidden="true"></i>
+                            Lista de Servicios
+                        </a>
+                    </li>
                 </ul>
             </div>
-            <div class="menu_section">
+
+            {{-- <div class="menu_section">
                 <h3>{{ __('views.backend.section.navigation.sub_header_1') }}</h3>
                 <ul class="nav side-menu">
                     <li>
@@ -42,7 +82,8 @@
                             <i class="fa fa-users" aria-hidden="true"></i>
                             {{ __('views.backend.section.navigation.menu_1_1') }}
                         </a>
-                    </li><li>
+                    </li>
+                    <li>
                         <a href="{{ route('admin.users.restore') }}">
                             <i class="fa fa-users" aria-hidden="true"></i>
                             {{ __('views.backend.section.navigation.menu_1_3') }}
@@ -55,8 +96,10 @@
                         </a>
                     </li>
                 </ul>
-            </div>
-            <div class="menu_section">
+            </div> --}}
+
+            
+            {{-- <div class="menu_section">
                 <h3>{{ __('views.backend.section.navigation.sub_header_2') }}</h3>
 
                 <ul class="nav side-menu">
@@ -80,16 +123,19 @@
                         </ul>
                     </li>
                 </ul>
-            </div>
+            </div> --}}
+
             <div class="menu_section">
                 <h3>{{ __('views.backend.section.navigation.sub_header_3') }}</h3>
                 <ul class="nav side-menu">
                   <li>
-                      <a href="https://l64.cc/nlaff/VXZPYHCTC" target="_blank" title="Online Software License Management"><i class="fa fa-external-link" aria-hidden="true"></i>Labs64 NetLicensing</a>
+                      <a href="https://pertec.com.bo/" target="_blank" title="Pertec">
+                        <i class="fa fa-home" aria-hidden="true"></i>Pertec Sitio Web</a>
                   </li>
-                  <li>
-                      <a href="https://www.labs64.com/guidechimp/" target="_blank" title="Interactive Guided Product Tours"><i class="fa fa-external-link" aria-hidden="true"></i>GuideChimp</a>
-                  </li>
+                  {{-- <li>
+                      <a href="https://www.labs64.com/guidechimp/" target="_blank" title="Interactive Guided Product Tours">
+                        <i class="fa fa-external-link" aria-hidden="true"></i>GuideChimp</a>
+                  </li> --}}
                 </ul>
             </div>
         </div>

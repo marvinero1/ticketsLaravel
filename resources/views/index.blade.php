@@ -5,10 +5,10 @@
     <div class="row" style="padding-top: 55px;">
         <div>
             <h1 class="font" style="text-align: center;"><i class="fa fa-ticket"></i> <strong>Pertec Ticket's</strong></h1>        
-        </div>
+        </div><br><br><br>
 
         <div>
-            <img src="{{ url('assets/images/icon.png') }}" alt="logo" width="500px;" style="display: block;margin: auto;">
+            <img src="{{ url('assets/images/icon.png') }}" alt="logo" width="275px;" height="275px;" style="display: block;margin: auto;">
         </div>
     </div><br><br><br><hr><br>
 

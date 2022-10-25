@@ -17,6 +17,9 @@ const mix = require('laravel-mix');
  |--------------------------------------------------------------------------
  |
  */
+mix.styles('resources/assets/admin/css/admin.css', 'public/assets/auth/css/auth.css').version();
+mix.styles('resources/assets/admin/css/admin.css', 'public/assets/admin/css/admin.css').version();
+
 
 mix.scripts([
     'node_modules/jquery/dist/jquery.js',
